@@ -2,6 +2,6 @@ version: 1.0.{build}
 environment:
   NUGET_API_KEY:
     secure: Hap3+kDvFoLeY5F/EFw6p51gFFITTORIY/xo1/M7GZdBrTn3vn+HN3yF9VAg+Spi
-build:
-  verbosity: minimal
+build_script:
+- cmd: powershell -NoProfile -ExecutionPolicy unrestricted -Command .\build.ps1 -Target "AppVeyor"
 test: off

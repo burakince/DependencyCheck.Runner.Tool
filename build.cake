@@ -25,7 +25,7 @@ Task("Pack")
             Title = package,
             Authors = new[] { "Burak İnce" },
             Owners = new[] { "Burak İnce", "cake-contrib" },
-            Description = "Nuget tool package for OWASP DependencyCheck",
+            Description = "Nuget tool package for OWASP Dependency Check",
             Summary = "Contains the runner with version " + toolVersion,
             ProjectUrl = new Uri("https://github.com/burakince/DependencyCheck.Runner.Tool"),
             LicenseUrl = new Uri("https://github.com/burakince/DependencyCheck.Runner.Tool/blob/master/LICENSE"),
