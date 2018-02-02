@@ -13,13 +13,19 @@ Setup(context =>
     {
         CreateDirectory("nuget");
     }
-    CleanDirectory("nuget");
 });
+
+Task("Clean")
+    .Does(() =>
+    {
+        CleanDirectory("nuget");
+    });
 
 Task("Pack")
     .Does(() =>
     {
-        var nuGetPackSettings = new NuGetPackSettings {
+        var nuGetPackSettings = new NuGetPackSettings
+        {
             Id = package,
             Version = version,
             Title = package,
@@ -32,7 +38,13 @@ Task("Pack")
             RequireLicenseAcceptance = false,
             Symbols = false,
             NoPackageAnalysis = true,
-            Files = new [] { new NuSpecContent { Source = string.Format(@"**", package), Target = "tools" } },
+            Files = new [] 
+            {
+                new NuSpecContent
+                {
+                    Source = string.Format(@"**", package), Target = "tools"
+                }
+            },
             BasePath = "./runner",
             OutputDirectory = "./nuget"
         };
@@ -62,13 +74,16 @@ Task("Publish")
         };
 
         var packagePath = "./nuget/" + package + "." + version + ".nupkg";
-        NuGetPush(packagePath, new NuGetPushSettings {
+
+        NuGetPush(packagePath, new NuGetPushSettings
+        {
             Source = "https://www.nuget.org/api/v2/package",
             ApiKey = apiKey
         });
     });
 
 Task("Build")
+    .IsDependentOn("Clean")
     .IsDependentOn("Pack")
     .IsDependentOn("Update-Appveyor-Build-Version");
 
