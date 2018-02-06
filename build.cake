@@ -4,8 +4,8 @@ var package = "DependencyCheck.Runner.Tool";
 var apiKey = EnvironmentVariable("NUGET_API_KEY") ?? "abcdef0123456789";
 var buildNumber = EnvironmentVariable("APPVEYOR_BUILD_NUMBER") ?? "1";
 
-var version = "3.1.0";
-var toolVersion = "3.1.0";
+var version = "3.1.1";
+var toolVersion = "3.1.1";
 
 Setup(context =>
 {
